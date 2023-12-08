@@ -1,43 +1,36 @@
 import React from "react";
-import logo from '../assets/images/logo-DH.png'
+import logo from '../assets/images/logo 1.png'
 import '../assets/css/App.css'
 
 function SideBan(){
     return(
     <>
-        <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
-			<a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-				<div className="sidebar-brand-icon">
-					<img className="w-100" src={logo} alt="Digital House"/>
+        <ul className="navbar-nav sidebar sidebar-dark accordion color_barra " id="accordionSidebar">
+			<a className="sidebar-brand d-flex align-items-center justify-content-center color_barra " href="/">
+				<div className="sidebar-brand-icon color_barra">
+					<br /><img className="w-100 color_barra" src={logo} alt="Grupo_11"/>
 				</div>
 			</a>
-			<hr className="sidebar-divider my-0"/>
-			<li className="nav-item active">
-				<a className="nav-link" href="/">
+			<br /><br />
+			<hr className="sidebar-divider my-0 color_barra"/>
+			<li className="nav-item active color_barra">
+				<a className="nav-link color_barra" href="/">
 					<i className="fas fa-fw fa-tachometer-alt"></i>
-					<span>Dashboard - DH movies</span></a>
+					<span>Techtropolis</span></a>
 			</li>
-			<hr className="sidebar-divider"/>
-			<div className="sidebar-heading">Actions</div>
-			<li className="nav-item">
-				<a className="nav-link collapsed" href="/">
-					<i className="fas fa-fw fa-folder"></i>
-					<span>Pages</span>
-				</a>
+			<li className="nav-item color_barra">
+				<a className="nav-link color_barra" href="/Users">
+					<i className="fas fa-fw fa-table color_barra"></i>
+					<span>Tables Users</span></a>
 			</li>
-			<li className="nav-item">
-				<a className="nav-link" href="/">
-					<i className="fas fa-fw fa-chart-area"></i>
-					<span>Charts</span></a>
-			</li>
-			<li className="nav-item">
-				<a className="nav-link" href="/">
-					<i className="fas fa-fw fa-table"></i>
-					<span>Tables</span></a>
+			<li className="nav-item color_barra">
+				<a className="nav-link color_barra" href="/Producto">
+					<i className="fas fa-fw fa-table color_barra"></i>
+					<span>Tables Producto</span></a>
 			</li>
 
 			
-			<hr className="sidebar-divider d-none d-md-block"/>
+			<hr className="sidebar-divider d-none d-md-block color_barra"/>
 		</ul>
 
 		</>
