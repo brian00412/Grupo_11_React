@@ -1,11 +1,11 @@
 import React from "react";
 import { useEffect, useState } from 'react'
 
-function Users() {
+function Producto() {
     const [listProducts, setlistProducts] = useState([]);
     useEffect(() => {
       const traedata = async () => {
-        const response = await fetch('http://localhost:8001/apis/users')
+        const response = await fetch('http://localhost:8001/apis/products')
         const data = await response.json()
         setlistProducts(data.data)
       }
@@ -20,10 +20,13 @@ function Users() {
                 <thead>
                   <tr>
                     <th>id</th>
-                    <th>firstName</th>
-                    <th>lastName</th>
-                    <th>email</th>
-                    <th>image</th>
+                    <th>nombre</th>
+                    <th>descripcion</th>
+                    <th>categoria</th>
+                    <th>precio</th>
+                    <th>descuento</th>
+                    <th>color</th>
+                    <th>imagen</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -31,10 +34,13 @@ function Users() {
                   {listProducts.map(producto => (
                     <tr key={producto.id}>
                       <td>{producto.id}</td>
-                      <td>{producto.firstName}</td>
-                      <td>{producto.lastName}</td>
-                      <td>{producto.email}</td>
-                      <td>{producto.image}</td>
+                      <td>{producto.nombre}</td>
+                      <td>{producto.descripcion}</td>
+                      <td>{producto.categoria}</td>
+                      <td>{producto.precio}</td>
+                      <td>{producto.descuento}</td>
+                      <td>{producto.color}</td>
+                      <td>{producto.imagen}</td>
                     </tr>
                   ))}
                   {/* <th>id  </th>{listProducts.map(producto => (<li key={producto.id}>{producto.id}</li>))} */}
@@ -55,4 +61,4 @@ function Users() {
     )
 }
 
-export default Users
+export default Producto
