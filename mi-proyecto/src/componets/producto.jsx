@@ -5,7 +5,7 @@ function Producto() {
     const [listProducts, setlistProducts] = useState([]);
     useEffect(() => {
       const traedata = async () => {
-        const response = await fetch('http://localhost:8001/apis/products')
+        const response = await fetch('http://localhost:8001/api/products')
         const data = await response.json()
         setlistProducts(data.data)
       }
@@ -22,7 +22,7 @@ function Producto() {
                     <th>id</th>
                     <th>nombre</th>
                     <th>descripcion</th>
-                    <th>categoria</th>
+                    <th>categoria_id</th>
                     <th>precio</th>
                     <th>descuento</th>
                     <th>color</th>
@@ -35,8 +35,8 @@ function Producto() {
                     <tr key={producto.id}>
                       <td>{producto.id}</td>
                       <td>{producto.nombre}</td>
-                      <td>{producto.descripcion}</td>
-                      <td>{producto.categoria}</td>
+                      <td>{producto.descripcion.toString()}</td>
+                      <td>{producto.categoria_id}</td>
                       <td>{producto.precio}</td>
                       <td>{producto.descuento}</td>
                       <td>{producto.color}</td>
