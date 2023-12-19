@@ -37,9 +37,7 @@ function Producto() {
                       <td>{producto.nombre}</td>
                       <td>{producto.descripcion.toString()}</td>
                       <td><a href={producto.detalle}>{producto.detalle}</a></td>
-                     
-                
-                      
+
                     </tr>
                   ))}
                   {/* <th>id  </th>{listProducts.map(producto => (<li key={producto.id}>{producto.id}</li>))} */}
