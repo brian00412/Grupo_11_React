@@ -5,7 +5,7 @@ function UltimoProduct() {
     const [listProducts, setlistProducts] = useState([]);
     useEffect(() => {
         const traedata = async () => {
-            const response = await fetch('http://localhost:8001/apis/products')
+            const response = await fetch('http://localhost:8001/api/products')
             const data = await response.json()
             setlistProducts(data.data)
         }
@@ -22,7 +22,7 @@ function UltimoProduct() {
                         <div className="card shadow mb-4">
                             <div className="card-header py-3">
                                 <h5 className="m-0 font-weight-bold text-gray-800">
-                                    Ultimo Producto Agregado
+                                    Ultimo Producto Agregado 1
                                 </h5>
                             </div>
                             <div className="card-body">
@@ -36,7 +36,7 @@ function UltimoProduct() {
                                 </div>
                                 {/* {((<li key={productoinfo.id}>{productoinfo.nombre}</li>))} */}
                                 <p>
-                                    {/* {((<li key={productoinfo.id}>{productoinfo.descripcion}</li>))} */}
+                                    {((<li key={productoinfo.id}>{productoinfo.descripcion}</li>))}
                                     {/* {<li key={productoinfo.id}>{productoinfo.nombre}</li>} */}
                                 </p>
                                 <a

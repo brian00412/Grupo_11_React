@@ -1,35 +1,70 @@
-import React from "react";
+import React, { Profiler } from "react";
 import '../assets/css/App.css';
 import { useEffect, useState } from 'react'
 import UltimoProduct from "./UltimoProduct"
 
 function RowMovies() {
 
+    const [listprueba, setlistprueba] = useState([]);
+    useEffect(() => {
+        const traedata = async () => {
+            const response = await fetch('http://localhost:8001/api/products')
+            const data = await response.json()
+            setlistprueba(data)
+        }
+        traedata()
+    }, []);
+    console.log(listprueba);
+
+///// Ultimo Producto obtenido
+
     const [listProducts, setlistProducts] = useState([]);
     useEffect(() => {
         const traedata = async () => {
-
-
             const response = await fetch('http://localhost:8001/api/products')
-
             const data = await response.json()
             setlistProducts(data.data)
         }
         traedata()
     }, []);
 
-    console.log('listProducts:', listProducts);
-    const productoinfo = listProducts[listProducts.length - 1];
-    console.log('Last Product:', productoinfo)
+    let prodcutoId = null
+    let productoinfo = null;
+    if (listProducts.length > 0) {
+        productoinfo = listProducts[listProducts.length - 1];
+        prodcutoId = productoinfo.detalle
+        console.log('Last Product:', productoinfo);
+        console.log(prodcutoId);
+    }
 
-    // const imagen = '' + {productoinfo}
-    // const descripcionProducto = productoinfo.descripcion
-    // console.log( productoinfo.descripcion);
 
+//// contador de producto por categoria 
 
-    // const productoinfo = listProducts.reverse()
-    // console.log(productoinfo)
+    const [listcategoria, setlistcategoria] = useState([]);
+    useEffect(() => {
+        const traedata = async () => {
+            const response = await fetch('http://localhost:8001/api/products')
+            const data = await response.json()
+            setlistcategoria(data.meta.totalPorCategoria)
+        }
+        traedata()
+    }, []);
+    console.log(listcategoria);
+    const caracteristica = Object.keys(listcategoria)
+    console.log(caracteristica);
+////
 
+    const [productoinformacion, setproductoinfo] = useState([]);
+    useEffect(() => {
+        const traedata = async () => {
+            const response = await fetch('http://localhost:8001/api/products')
+            const data = await response.json()
+            setproductoinfo(data)
+        }
+        traedata()
+    }, []);
+    console.log(productoinformacion);
+    //// users Contador
     const [listUsers, setlistUsers] = useState([]);
     useEffect(() => {
         const traedata = async () => {
@@ -41,7 +76,7 @@ function RowMovies() {
         }
         traedata()
     }, []);
-    // console.log(listUsers);
+    // console.log(listUsers);  
 
     return (
         <>
@@ -98,7 +133,7 @@ function RowMovies() {
                                         <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Total de categorias
                                         </div>
-                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{<h5 key={listProducts.categoria}>{listProducts.length}</h5>}</div>
+                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{<h5 key={caracteristica}>{caracteristica.length}</h5>}</div>
                                     </div>
                                     <div className="col-auto">
                                         <i className="fas fa-user fa-2x text-gray-300" />
@@ -119,23 +154,24 @@ function RowMovies() {
                             </div>
                             <div className="card-body">
                                 <div className="text-center">
-                                    <img
+                                    {/* <img
                                         className="img-fluid px-3 px-sm-4 mt-3 mb-4"
                                         style={{ width: "40rem" }}
-                                        // src= "http://localhost:8001/images/productos/image-1702344739769.png"
-                                        alt=" Star Wars - Mandalorian "
-                                    />
+                                        src={productoinfo && productoinfo.detalle}
+                                        alt=" ultimo producto "
+                                    /> */}
+                                    {productoinfo && <h2 key={productoinfo.id}>{productoinfo.nombre}</h2>}
                                 </div>
                                 <p>
-                                    {/* {<li key={productoinfo.id}>{productoinfo[0].descripcion}</li>} */}
+                                    {productoinfo && <li key={productoinfo.id}>{productoinfo.descripcion}</li>}
                                 </p>
                                 <a
                                     className="btn btn-danger"
                                     target="_blank"
                                     rel="nofollow"
-                                    href="/"
+                                    href={productoinfo && productoinfo.detalle}
                                 >
-                                    View movie detail
+                                     Descripcion del Producto
                                 </a>
                             </div>
                         </div>
@@ -151,16 +187,54 @@ function RowMovies() {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-6 mb-4">
-                                        <div className="card bg-dark text-white shadow">
+                                        <div className="card bg-dark text-white shadow">    
 
-                                            <div className="card-body">Electrodomesticos</div>
-
+                                            <div className="card-body">{caracteristica && <h4 key={caracteristica}>{caracteristica[1]}</h4>}</div>
+                                            
                                         </div>
                                     </div>
                                     <div className="col-lg-6 mb-4">
                                         <div className="card bg-dark text-white shadow">
-                                            <div className="card-body">Gamer</div>
+                                            <div className="card-body">{caracteristica && <h4 key={caracteristica}>{caracteristica[0]}</h4>}</div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                        <div className="card border-left-primary shadow h-100 py-2">
+                            <div className="card-body">
+                                <div className="row no-gutters align-items-center">
+                                    <div className="col mr-2">
+                                        <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Electrodomestico
+                                        </div>
+
+                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{listcategoria && <li key={listcategoria.id}>{listcategoria.Electrodomesticos}</li>}</div>
+                                        
+                                    </div>
+                                    <div className="col-auto">
+                                        <i className="fas fa-film fa-2x text-gray-300" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                        <div className="card border-left-primary shadow h-100 py-2">
+                            <div className="card-body">
+                                <div className="row no-gutters align-items-center">
+                                    <div className="col mr-2">
+                                        <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Gamer
+                                        </div>
+
+                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{listcategoria && <li key={listcategoria.id}>{listcategoria.Gamer}</li>}</div>
+
+                                    </div>
+                                    <div className="col-auto">
+                                        <i className="fas fa-film fa-2x text-gray-300" />
                                     </div>
                                 </div>
                             </div>
