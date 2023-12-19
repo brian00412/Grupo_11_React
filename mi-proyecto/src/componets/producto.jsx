@@ -22,11 +22,11 @@ function Producto() {
                     <th>id</th>
                     <th>nombre</th>
                     <th>descripcion</th>
-                    <th>categoria_id</th>
-                    <th>precio</th>
-                    <th>descuento</th>
-                    <th>color</th>
-                    <th>imagen</th>
+                    <th>detalle</th>
+                    
+                    
+                   
+                    
                   </tr>
                 </thead>
                 <tfoot>
@@ -36,11 +36,10 @@ function Producto() {
                       <td>{producto.id}</td>
                       <td>{producto.nombre}</td>
                       <td>{producto.descripcion.toString()}</td>
-                      <td>{producto.categoria_id}</td>
-                      <td>{producto.precio}</td>
-                      <td>{producto.descuento}</td>
-                      <td>{producto.color}</td>
-                      <td>{producto.imagen}</td>
+                      <td><a href={producto.detalle}>{producto.detalle}</a></td>
+                     
+                
+                      
                     </tr>
                   ))}
                   {/* <th>id  </th>{listProducts.map(producto => (<li key={producto.id}>{producto.id}</li>))} */}

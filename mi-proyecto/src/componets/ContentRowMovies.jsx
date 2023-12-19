@@ -5,17 +5,6 @@ import UltimoProduct from "./UltimoProduct"
 
 function RowMovies() {
 
-    const [listprueba, setlistprueba] = useState([]);
-    useEffect(() => {
-        const traedata = async () => {
-            const response = await fetch('http://localhost:8001/api/products')
-            const data = await response.json()
-            setlistprueba(data)
-        }
-        traedata()
-    }, []);
-    console.log(listprueba);
-
 ///// Ultimo Producto obtenido
 
     const [listProducts, setlistProducts] = useState([]);
@@ -54,16 +43,6 @@ function RowMovies() {
     console.log(caracteristica);
 ////
 
-    const [productoinformacion, setproductoinfo] = useState([]);
-    useEffect(() => {
-        const traedata = async () => {
-            const response = await fetch('http://localhost:8001/api/products')
-            const data = await response.json()
-            setproductoinfo(data)
-        }
-        traedata()
-    }, []);
-    console.log(productoinformacion);
     //// users Contador
     const [listUsers, setlistUsers] = useState([]);
     useEffect(() => {
@@ -76,7 +55,7 @@ function RowMovies() {
         }
         traedata()
     }, []);
-    // console.log(listUsers);  
+    
 
     return (
         <>
@@ -154,12 +133,7 @@ function RowMovies() {
                             </div>
                             <div className="card-body">
                                 <div className="text-center">
-                                    {/* <img
-                                        className="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                                        style={{ width: "40rem" }}
-                                        src={productoinfo && productoinfo.detalle}
-                                        alt=" ultimo producto "
-                                    /> */}
+                                   
                                     {productoinfo && <h2 key={productoinfo.id}>{productoinfo.nombre}</h2>}
                                 </div>
                                 <p>

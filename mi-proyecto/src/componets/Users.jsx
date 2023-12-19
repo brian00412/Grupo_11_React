@@ -21,9 +21,8 @@ function Users() {
                   <tr>
                     <th>id</th>
                     <th>firstName</th>
-                    <th>lastName</th>
                     <th>email</th>
-                    <th>image</th>
+                    <th>detalle</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -32,9 +31,9 @@ function Users() {
                     <tr key={producto.id}>
                       <td>{producto.id}</td>
                       <td>{producto.firstName}</td>
-                      <td>{producto.lastName}</td>
                       <td>{producto.email}</td>
-                      <td>{producto.image}</td>
+                      <td><a href={producto.detalle}>{producto.detalle}</a></td>
+                      
                     </tr>
                   ))}
                   {/* <th>id  </th>{listProducts.map(producto => (<li key={producto.id}>{producto.id}</li>))} */}
