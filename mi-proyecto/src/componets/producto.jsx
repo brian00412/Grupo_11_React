@@ -36,7 +36,7 @@ function Producto() {
                       <td>{producto.id}</td>
                       <td>{producto.nombre}</td>
                       <td>{producto.descripcion.toString()}</td>
-                      <td>{producto.categoria_id}</td>
+                      <td>{producto.categoria}</td>
                       <td>{producto.precio}</td>
                       <td>{producto.descuento}</td>
                       <td>{producto.color}</td>
