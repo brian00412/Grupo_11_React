@@ -95,7 +95,7 @@ function RowMovies() {
                                             Total de Usuarios
                                         </div>
 
-                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{<h5 key={listProducts.id}>{listProducts.length}</h5>}</div>
+                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{<h5 key={listUsers.id}>{listUsers.length}</h5>}</div>
 
                                     </div>
                                     <div className="col-auto">
@@ -115,7 +115,7 @@ function RowMovies() {
                                             Total de Productos
                                         </div>
 
-                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{<h5 key={listUsers.id}>{listUsers.length}</h5>}</div>
+                                        <div className="h5 mb-0 font-weight-bold text-gray-800">{<h5 key={listProducts.id}>{listProducts.length}</h5>}</div>
 
                                     </div>
                                     <div className="col-auto">
